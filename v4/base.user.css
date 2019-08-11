@@ -1,5 +1,5 @@
 /**
-目的:让标题能够自动产生序号, 显示所有标题标号.
+目的:让标题能够自动产生序号,但只显示2,3级标题序号.
 typora版本:0.9.72(beta)
 */
 
@@ -20,13 +20,14 @@ typora版本:0.9.72(beta)
 /* 递增与显示 */
 .outline-content>.outline-h1>.outline-item>.outline-label::before,  /*for h1*/
 .outline-content>.outline-h1>.outline-children>.outline-h2>.outline-item>.outline-label::before,/*for h2*/
-.outline-content>.outline-h1>.outline-children>.outline-h2>.outline-children>.outline-h3>.outline-item>.outline-label::before,/*for h3*/
-.outline-content>.outline-h1>.outline-children>.outline-h2>.outline-children>.outline-h3>.outline-children>.outline-h4>.outline-item>.outline-label::before,/*for h4*/
-.outline-content>.outline-h1>.outline-children>.outline-h2>.outline-children>.outline-h3>.outline-children>.outline-h4>.outline-children>.outline-h5>.outline-item>.outline-label::before,/*for h5*/
-.outline-content>.outline-h1>.outline-children>.outline-h2>.outline-children>.outline-h3>.outline-children>.outline-h4>.outline-children>.outline-h5>.outline-children>.outline-h6>.outline-item>.outline-label::before/*for h6*/
+.outline-content>.outline-h1>.outline-children>.outline-h2>.outline-children>.outline-h3>.outline-item>.outline-label::before/*for h3*/
 {
     counter-increment: section-sidebar;
     content:counters(section-sidebar,'.')" ";
+}
+
+.outline-content>.outline-h1>.outline-item>.outline-label::before{
+    content: "";/* 一级标题不显示 */
 }
 
 /* ------------TOC目录树-------------------*/
@@ -64,17 +65,9 @@ typora版本:0.9.72(beta)
     counter-increment: section-toc-h3;
     content: counter(section-toc-h1)"."counter(section-toc-h2)"."counter(section-toc-h3)" ";
 }
-.md-toc-content>.md-toc-h4>.md-toc-inner::before{
-    counter-increment: section-toc-h4;
-    content: counter(section-toc-h1)"."counter(section-toc-h2)"."counter(section-toc-h3)"."counter(section-toc-h4)" ";
-}
-.md-toc-content>.md-toc-h5>.md-toc-inner::before{
-    counter-increment: section-toc-h5;
-    content: counter(section-toc-h1)"."counter(section-toc-h2)"."counter(section-toc-h3)"."counter(section-toc-h4)"."counter(section-toc-h5)" ";
-}
-.md-toc-content>.md-toc-h6>.md-toc-inner::before{
-    counter-increment: section-toc-h6;
-    content: counter(section-toc-h1)"."counter(section-toc-h2)"."counter(section-toc-h3)"."counter(section-toc-h4)"."counter(section-toc-h5)"."counter(section-toc-h6)" ";
+
+.md-toc-content>.md-toc-h1>.md-toc-inner::before{
+    content: "";/* 一级标题不显示 */
 }
 
 /* -----------正文目录---------------*/
@@ -112,15 +105,7 @@ typora版本:0.9.72(beta)
     counter-increment: section-main-h3;
     content: counter(section-main-h1)"."counter(section-main-h2)"."counter(section-main-h3)" ";
 }
-#write>h4.md-heading .md-plain::before{
-    counter-increment: section-main-h4;
-    content: counter(section-main-h1)"."counter(section-main-h2)"."counter(section-main-h3)"."counter(section-main-h4)" ";
-}
-#write>h5.md-heading .md-plain::before{
-    counter-increment: section-main-h5;
-    content: counter(section-main-h1)"."counter(section-main-h2)"."counter(section-main-h3)"."counter(section-main-h4)"."counter(section-main-h5)" ";
-}
-#write>h6.md-heading .md-plain::before{
-    counter-increment: section-main-h6;
-    content: counter(section-main-h1)"."counter(section-main-h2)"."counter(section-main-h3)"."counter(section-main-h4)"."counter(section-main-h5)"."counter(section-main-h6)" ";
+
+#write>h1.md-heading .md-plain::before{
+    content: ""; /* 一级标题不显示 */
 }
