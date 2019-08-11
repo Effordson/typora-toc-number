@@ -108,31 +108,31 @@ typora版本:0.9.72(beta)
 }
 
 /* 递归与显示 */
-#write>h1.md-heading>.md-plain::before{
+#write>h1.md-heading .md-plain::before{
     counter-increment: section-main-h1;
     content: counter(section-main-h1)" ";
 }
-#write>h2.md-heading>.md-plain::before{
+#write>h2.md-heading .md-plain::before{
     counter-increment: section-main-h2;
     content: counter(section-main-h1)"."counter(section-main-h2)" ";
 }
-#write>h3.md-heading>.md-plain::before{
+#write>h3.md-heading .md-plain::before{
     counter-increment: section-main-h3;
     content: counter(section-main-h1)"."counter(section-main-h2)"."counter(section-main-h3)" ";
 }
-#write>h4.md-heading>.md-plain::before{
+#write>h4.md-heading .md-plain::before{
     counter-increment: section-main-h4;
     content: counter(section-main-h1)"."counter(section-main-h2)"."counter(section-main-h3)"."counter(section-main-h4)" ";
 }
-#write>h5.md-heading>.md-plain::before{
+#write>h5.md-heading .md-plain::before{
     counter-increment: section-main-h5;
     content: counter(section-main-h1)"."counter(section-main-h2)"."counter(section-main-h3)"."counter(section-main-h4)"."counter(section-main-h5)" ";
 }
-#write>h6.md-heading>.md-plain::before{
+#write>h6.md-heading .md-plain::before{
     counter-increment: section-main-h6;
     content: counter(section-main-h1)"."counter(section-main-h2)"."counter(section-main-h3)"."counter(section-main-h4)"."counter(section-main-h5)"."counter(section-main-h6)" ";
 }
 
-#write>h1.md-heading>.md-plain::before{
+#write>h1.md-heading .md-plain::before{
     content: ""; /* 一级标题不显示 */
 }
