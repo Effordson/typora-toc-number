@@ -26,7 +26,7 @@ typora版本:0.9.72(beta)
 }
 
 .outline-content>.outline-h1>.outline-item>.outline-label::before{
-    content:counter(section-sidebar,simp-chinese-informal);
+    content:counter(section-sidebar,simp-chinese-informal)" ";
 }
 
 /* ------------TOC目录树-------------------*/
