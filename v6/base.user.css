@@ -1,0 +1,132 @@
+/**
+目的:让标题能够自动产生序号,但只显示2,3级标题序号.
+typora版本:0.9.72(beta)
+*/
+
+
+/* ------------侧边大纲目录树-----------------*/
+
+/* 设置嵌套计数器 */
+.outline-content,/*for h1*/
+.outline-content>.outline-h1>.outline-children,/*for h2*/
+.outline-content>.outline-h1>.outline-children>.outline-h2>.outline-children,/*for h3*/
+.outline-content>.outline-h1>.outline-children>.outline-h2>.outline-children>.outline-h3-children,/*for h4*/
+.outline-content>.outline-h1>.outline-children>.outline-h2>.outline-children>.outline-h3-children>.outline-h4>.outline-children,/*for h5*/
+.outline-content>.outline-h1>.outline-children>.outline-h2>.outline-children>.outline-h3-children>.outline-h4>.outline-children>.outline-h5>.outline-children/*for h6*/
+{
+    counter-reset: section-sidebar;
+}
+
+/* 递增与显示 */
+.outline-content>.outline-h1>.outline-item>.outline-label::before,  /*for h1*/
+.outline-content>.outline-h1>.outline-children>.outline-h2>.outline-item>.outline-label::before,/*for h2*/
+.outline-content>.outline-h1>.outline-children>.outline-h2>.outline-children>.outline-h3>.outline-item>.outline-label::before/*for h3*/
+{
+    counter-increment: section-sidebar;
+    content:counters(section-sidebar,'.')" ";
+}
+
+.outline-content>.outline-h1>.outline-item>.outline-label::before{
+    content: "";/* 一级标题不显示 */
+}
+
+/* ------------TOC目录树-------------------*/
+
+/* 设置计数器(非嵌套的情况) */
+.md-toc-content{
+    counter-reset: section-toc-h1;
+}
+.md-toc-content>.md-toc-h1{
+    counter-reset:section-toc-h2 section-toc-h3 section-toc-h4 section-toc-h5 section-toc-h6;
+}
+.md-toc-content>.md-toc-h2{
+    counter-reset:section-toc-h3 section-toc-h4 section-toc-h5 section-toc-h6;
+}
+.md-toc-content>.md-toc-h3{
+    counter-reset:section-toc-h4 section-toc-h5 section-toc-h6;
+}
+.md-toc-content>.md-toc-h4{
+    counter-reset:section-toc-h5 section-toc-h6;
+}
+.md-toc-content>.md-toc-h5{
+    counter-reset:section-toc-h6;
+}
+
+/* 递增与显示 */
+.md-toc-content>.md-toc-h1>.md-toc-inner::before{
+    counter-increment: section-toc-h1;
+    content: counter(section-toc-h1)" ";
+}
+.md-toc-content>.md-toc-h2>.md-toc-inner::before{
+    counter-increment: section-toc-h2;
+    content: counter(section-toc-h1)"."counter(section-toc-h2)" ";
+}
+.md-toc-content>.md-toc-h3>.md-toc-inner::before{
+    counter-increment: section-toc-h3;
+    content: counter(section-toc-h1)"."counter(section-toc-h2)"."counter(section-toc-h3)" ";
+}
+
+.md-toc-content>.md-toc-h1>.md-toc-inner::before{
+    content: "";/* 一级标题不显示 */
+}
+
+/* -----------正文目录---------------*/
+
+/* 设置计数器(非递归情况) */
+#write{
+    counter-reset: section-main-h1;
+}
+#write>h1.md-heading{
+    counter-reset: section-main-h2 section-main-h3 section-main-h4 section-main-h5 section-main-h6
+}
+#write>h2.md-heading{
+    counter-reset: section-main-h3 section-main-h4 section-main-h5 section-main-h6
+}
+#write>h3.md-heading{
+    counter-reset: section-main-h4 section-main-h5 section-main-h6
+}
+#write>h4.md-heading{
+    counter-reset: section-main-h5 section-main-h6
+}
+#write>h5.md-heading{
+    counter-reset: section-main-h6
+}
+
+/* 递归与显示 */
+#write>h1.md-heading .md-plain::before{
+    counter-increment: section-main-h1;
+    content: counter(section-main-h1)" ";
+}
+#write>h2.md-heading .md-plain::before{
+    counter-increment: section-main-h2;
+    content: counter(section-main-h1)"."counter(section-main-h2)" ";
+}
+#write>h3.md-heading .md-plain::before{
+    counter-increment: section-main-h3;
+    content: counter(section-main-h1)"."counter(section-main-h2)"."counter(section-main-h3)" ";
+}
+
+#write>h1.md-heading .md-plain::before{
+    content: ""; /* 一级标题不显示 */
+}
+
+
+/* 额外的样式设计---动态显示5,6级标题 */
+/* 默认隐藏 */
+.outline-h5,.outline-h6{
+    max-height:0;
+    opacity:0;
+
+    transition: all 1s;
+    overflow: hidden;
+}
+/* 当hover到h4标题时, 显示其子h5标题 */
+.outline-h4:hover .outline-h5{
+    max-height:1000px;
+    opacity:1;    
+}
+/* 当hover到h5标题时, 显示其子h6标题 */
+.outline-h5:hover .outline-h6{
+    max-height:1000px;
+    opacity:1;
+}
