@@ -10,9 +10,9 @@ typora版本:0.9.72(beta)
 .outline-content,/*for h1*/
 .outline-content>.outline-h1>.outline-children,/*for h2*/
 .outline-content>.outline-h1>.outline-children>.outline-h2>.outline-children,/*for h3*/
-.outline-content>.outline-h1>.outline-children>.outline-h2>.outline-children>.outline-h3-children,/*for h4*/
-.outline-content>.outline-h1>.outline-children>.outline-h2>.outline-children>.outline-h3-children>.outline-h4>.outline-children,/*for h5*/
-.outline-content>.outline-h1>.outline-children>.outline-h2>.outline-children>.outline-h3-children>.outline-h4>.outline-children>.outline-h5>.outline-children/*for h6*/
+.outline-content>.outline-h1>.outline-children>.outline-h2>.outline-children>.outline-h3>.outline-children,/*for h4*/
+.outline-content>.outline-h1>.outline-children>.outline-h2>.outline-children>.outline-h3>.outline-children>.outline-h4>.outline-children,/*for h5*/
+.outline-content>.outline-h1>.outline-children>.outline-h2>.outline-children>.outline-h3>.outline-children>.outline-h4>.outline-children>.outline-h5>.outline-children/*for h6*/
 {
     counter-reset: section-sidebar;
 }
