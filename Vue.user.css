@@ -3,7 +3,7 @@
     color: #4e9072;
 }
 
-/* 重置标题大小 */
+/* 重置正文标题大小,并设置字体 */
 /*
 默认 
 h1 2.2rem
@@ -37,4 +37,9 @@ h5{
 h6{
     font-size: 1.25rem;
     font-family: "楷体";
+}
+
+/* 设置侧边栏字体 */
+#sidebar-content{
+    font-family: "华文新魏";
 }
