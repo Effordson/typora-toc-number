@@ -43,3 +43,8 @@ h6{
 #sidebar-content{
     font-family: "华文新魏";
 }
+
+/* 设置正文字体 */
+#write{
+    font-family: "宋体";
+}
